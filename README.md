@@ -1,3 +1,9 @@
+## About this fork....
+- Added `overshoot` measurement
+- Added `averages:bool` option to FontMetrics method, which will calculate average metrics for
+  your alphabet. Set the alphabet and character frequencies inside `FontMetrics.settings.chars.averages`
+  (by default it is just basic Latin characters, with English frequency)
+
 # FontMetrics
 
 A lightweight JavaScript library for computing accurate font metrics such as __x-height__, __cap height__, __ascent__, __descent__ and __tittle__ for any loaded web font.
@@ -40,19 +46,21 @@ This will return an object containing values that are normalised to `fontSize` a
 
 ```javascript
 {
-  capHeight: -0.73,
-  baseline: 0,
-  xHeight: -0.54,
-  descent: 0.195,
+  top: -0.935,
   bottom: 0.5,
+  capHeight: -0.73,
   ascent: -0.76,
   tittle: -0.73,
-  top: -0.935,
+  xHeight: -0.54,
+  baseline: 0,
+  descent: 0.195,
+  overshoot: 0.015625,
   fontFamily: 'Roboto',
   fontWeight: 'normal',
   fontSize: 200
 }
 ```
+
 ## How to use metrics
 
 As mentioned above, the values returned are normalised to `fontSize` and relative to `origin`. This is useful because you should then be able to use the returned values regardless of your display font size, simply by scaling them.

@@ -1,24 +1,29 @@
+const path = require("path");
+
 module.exports = {
   entry: {
     'FontMetrics': './source/FontMetrics.js',
     'demo': './source/demo/index.js',
   },
   output: {
-    umdNamedDefine: true,
-    libraryTarget: 'umd',
+    library: {
+      // name: "FontMetrics",
+      type: "module"
+    },
     publicPath: '/output/',
-    library: '[name]',
-    filename: '[name].js',
-    path: './output'
+    path: path.resolve(__dirname, './output')
   },
   plugins: [],
-  module: {
-    loaders: [
+  /*module: {
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        use: 'babel-loader',
         exclude: /(node_modules)/
       }
     ]
+  },*/
+  experiments: {
+    outputModule: true
   }
 }
